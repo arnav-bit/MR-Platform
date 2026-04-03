@@ -220,7 +220,6 @@ function VoiceScreen({ doctor, onDone }) {
   const [showDone, setShowDone] = useState(false)
 
   useEffect(() => {
-    // Simulate typing transcription
     const interval = setInterval(() => {
       setTranscriptLen(prev => {
         if (prev >= VOICE_TRANSCRIPT.length) {
@@ -234,13 +233,11 @@ function VoiceScreen({ doctor, onDone }) {
   }, [])
 
   useEffect(() => {
-    // Show parsed fields one by one
     PARSED_FIELDS.forEach((field, i) => {
       setTimeout(() => {
         setVisibleFields(prev => [...prev, i])
       }, field.delay)
     })
-    // Show done button after all fields
     setTimeout(() => setShowDone(true), 3800)
   }, [])
 
